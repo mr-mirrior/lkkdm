@@ -170,8 +170,8 @@ namespace DM.Models
     }
     public class PartitionDirectories
     {
-        const string ROOT = @"C:\DAMDATA";
-        const string ALT_ROOT = "DAMDATA";
+        const string ROOT = @"C:\DAMDATALKK";
+        const string ALT_ROOT = "DAMDATALKK";
         List<PartitionDirectory> dirs = new List<PartitionDirectory>();
         public List<PartitionDirectory> Directories { get { return dirs; } set { dirs = value; } }
         //         string rt = ROOT;

@@ -6,7 +6,7 @@ using DM.DB;
 
 namespace DM.DMControl
 {
-    
+
     public static class LoginControl
     {
 #if DEBUG

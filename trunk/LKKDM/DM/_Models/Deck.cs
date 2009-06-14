@@ -89,8 +89,8 @@ namespace DM.Models
             //             {
             //                 Name = this.ToString();
             //             }
-            if( Partition.ID != 0 )
-                deckInfo.BlockName = Partition.Description; 
+            if (Partition.ID != 0)
+                deckInfo.BlockName = Partition.Description;
         }
         // 仓面顶点坐标格式化字符串，准备入库
 
@@ -439,7 +439,7 @@ namespace DM.Models
                         last_idx = Math.Min(cl_idx, this.DeckInfo.DesignRollCount);
 
                         areas[cl_idx]++;
-                        if(isDatamap)
+                        if (isDatamap)
                             *(pp + j) = layersColor[cl_idx].ToArgb();
                         else
                             *(pp + j) = layersColor[last_idx].ToArgb();
@@ -498,11 +498,11 @@ namespace DM.Models
             {
                 fft = new Font(new FontFamily("宋体"), 3 * (float)owner.ScreenSize(0.356), GraphicsUnit.Pixel);
             }
-            
+
             for (int i = 0; i < nrs.Count; i++)
             {
-//                 bool aa = nrs[i].Vertex.AntiAlias;
-//                 nrs[i].Vertex.AntiAlias = false;
+                //                 bool aa = nrs[i].Vertex.AntiAlias;
+                //                 nrs[i].Vertex.AntiAlias = false;
                 g.SmoothingMode = SmoothingMode.AntiAlias;
                 Color c1 = nrs[i].Vertex.LineColor;
                 Color c2 = nrs[i].Vertex.FillColor;
@@ -511,11 +511,11 @@ namespace DM.Models
                 nrs[i].Draw(g, fft, true);
                 nrs[i].Vertex.LineColor = c1;
                 nrs[i].Vertex.FillColor = c2;
-//                 nrs[i].Vertex.AntiAlias = aa;
+                //                 nrs[i].Vertex.AntiAlias = aa;
             }
 
             //output.Save(@"C:\debug.png", System.Drawing.Imaging.ImageFormat.Png);
-            
+
             return output;
 
         }
@@ -554,7 +554,7 @@ namespace DM.Models
             double oldZoom = layer.Zoom;
             double oldRotate = layer.RotateDegree;
 
-            layer.Zoom = 10;
+            //layer.Zoom = 5;  //修改出数据图的比例
             layer.RotateDegree = 0;
             layer.CreateScreen();
 
@@ -567,11 +567,11 @@ namespace DM.Models
             //roll.Save(@"C:\roll.png", System.Drawing.Imaging.ImageFormat.Png);
             //elev.Save(@"C:\elev.png", System.Drawing.Imaging.ImageFormat.Png);
             isDatamap = false;
-            if (roll == null || elev == null )//|| roll.Width != elev.Width || roll.Height != elev.Height)
+            if (roll == null || elev == null)//|| roll.Width != elev.Width || roll.Height != elev.Height)
             {
                 return null;
             }
-            int width =Math.Min(roll.Width,elev.Width); //roll.Width;
+            int width = Math.Min(roll.Width, elev.Width); //roll.Width;
             int height = Math.Min(roll.Height, elev.Height); //roll.Height;
 
             BitmapData dataRoll, dataElev;
@@ -579,8 +579,8 @@ namespace DM.Models
             dataRoll = roll.LockBits(rc, ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
             dataElev = elev.LockBits(rc, ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
 
-            byte[] datamap = new byte[4+4+5*width*height]; // width, height, 5,5,5,5...
-            fixed(byte* orig = datamap)
+            byte[] datamap = new byte[4 + 4 + 5 * width * height]; // width, height, 5,5,5,5...
+            fixed (byte* orig = datamap)
             {
                 int* intp = (int*)orig;
                 *intp = width;
@@ -589,14 +589,14 @@ namespace DM.Models
                 byte* p = (orig + 8);
                 byte* rp = (byte*)dataRoll.Scan0;
                 byte* ep = (byte*)dataElev.Scan0;
-                for (int i = 0; i < height; i++ )
+                for (int i = 0; i < height; i++)
                 {
-                    for (int j = 0; j < width; j++ )
+                    for (int j = 0; j < width; j++)
                     {
                         // 碾压编数
                         int count = -1;
-                        int color = *((int*)(rp+j*4));
-                        if( (color&0xFF000000) != 0 )   // 透明？
+                        int color = *((int*)(rp + j * 4));
+                        if ((color & 0xFF000000) != 0)   // 透明？
                         {
                             for (int k = 0; k < layersColor.Length; k++)
                             {
@@ -609,14 +609,14 @@ namespace DM.Models
                             }
                         }
                         *p++ = (byte)count;
-                        
+
                         // 高程
                         float elevation = 0;
                         color = *((int*)(ep + j * 4));
-                        if((color&0xFF000000)!=0)
+                        if ((color & 0xFF000000) != 0)
                         {
                             color &= 0xFF; // 灰度图RGB相同，这里取蓝色分量
-                            elevation = (float)( ((float)color / 255) * this.DeckInfo.DesignDepth + this.DeckInfo.StartZ );
+                            elevation = (float)(((float)color / 255) * this.DeckInfo.DesignDepth + this.DeckInfo.StartZ);
                         }
                         *((float*)p) = elevation;
                         p += sizeof(float);
@@ -676,7 +676,7 @@ namespace DM.Models
                 return false;
             }
 #endif
-            
+
             //try
             {
                 Brush[] bs = new SolidBrush[layersColor.Length];
@@ -694,7 +694,7 @@ namespace DM.Models
                     layer.Zoom = 2;
                     layer.RotateDegree = 0;
                 }
-
+                layer.Zoom = 5;
                 layer.CreateScreen();
                 Polygon pl = this.Polygon;
                 if (pl.ScreenBoundary.Width > 5000 || pl.ScreenBoundary.Height > 5000)
@@ -705,7 +705,7 @@ namespace DM.Models
                     Utils.MB.Warning("放大率过大，请缩小图形后再试一次");
                     return false;
                 }
-                DirectoryInfo di = new DirectoryInfo(@"C:\OUTPUT\"+this.DeckInfo.SegmentName);
+                DirectoryInfo di = new DirectoryInfo(@"C:\OUTPUT\" + this.DeckInfo.SegmentName);
                 if (!di.Exists)
                 {
                     di.Create();
@@ -721,7 +721,19 @@ namespace DM.Models
 #if DEBUG
                 output.Save(@"C:\OUTPUT\" + this.Partition.Name + this.Elevation.Height.ToString("0.0") + this.ID.ToString() + "OrignRoll.png", System.Drawing.Imaging.ImageFormat.Png);
 #endif
+                layer.Zoom = oldZoom;
 
+                layer.CreateScreen();
+                pl = this.Polygon;
+                if (pl.ScreenBoundary.Width > 5000 || pl.ScreenBoundary.Height > 5000)
+                {
+                    layer.RotateDegree = oldRotate;
+                    layer.Zoom = oldZoom;
+                    layer.CreateScreen();
+                    Utils.MB.Warning("放大率过大，请缩小图形后再试一次");
+                    return false;
+                }
+                output = CreateRollCountImage(out areas);
                 //output.Save("C:\\1.png");
                 areaScale = new double[areas.Length];
 
@@ -811,7 +823,7 @@ namespace DM.Models
                 {
                     if (i > okcount)
                         continue;
-                    newG.FillRectangle(bs[i], offset + i * multiple + w0 - w0 / 2.2f, output.Height + newH*0.8f + output.Width / 6 * 0.5f * 0.5f * 2, w0 / 2.2f, w0 / 2.2f);
+                    newG.FillRectangle(bs[i], offset + i * multiple + w0 - w0 / 2.2f, output.Height + newH * 0.8f + output.Width / 6 * 0.5f * 0.5f * 2, w0 / 2.2f, w0 / 2.2f);
                     newG.DrawRectangle(Pens.Black, offset + i * multiple + w0 - w0 / 2.2f, output.Height + newH * 0.8f + output.Width / 6 * 0.5f * 0.5f * 2, w0 / 2.2f, w0 / 2.2f);
                     if (i == 0)
                     {
@@ -825,22 +837,22 @@ namespace DM.Models
 
                 for (int i = 0; i < 6; i++)
                 {
-                    if (i+6 > okcount)
+                    if (i + 6 > okcount)
                         continue;
                     newG.FillRectangle(bs[6 + i], offset + i * multiple + w0 - w0 / 2.2f, output.Height + newH * 0.8f + output.Width / 6 * 0.5f * 0.5f * 3.5f, w0 / 2.2f, w0 / 2.2f);
                     newG.DrawRectangle(Pens.Black, offset + i * multiple + w0 - w0 / 2.2f, output.Height + newH * 0.8f + output.Width / 6 * 0.5f * 0.5f * 3.5f, w0 / 2.2f, w0 / 2.2f);
-//                     if ((i + 6) == 11)
-//                     {
-//                         newG.DrawString("11遍及以上", ftString, /*bs[6 + i]*/Brushes.Black, offset * 1.05f + ((i + 1) * multiple - w0), output.Height + newH + output.Width / 6 * 0.5f * 0.5f * 3.5f);
-//                         newG.DrawString(GetAreaScale(areas, i + 6).ToString("0.00%"), ftScale, /*bs[6 + i]*/Brushes.Black, offset * 1.05f + ((i + 1) * multiple - w0), output.Height + newH + output.Width / 6 * 0.5f * 0.5f * 3.5f + w0 / 3.5f);
-//                         continue;
-//                     }
+                    //                     if ((i + 6) == 11)
+                    //                     {
+                    //                         newG.DrawString("11遍及以上", ftString, /*bs[6 + i]*/Brushes.Black, offset * 1.05f + ((i + 1) * multiple - w0), output.Height + newH + output.Width / 6 * 0.5f * 0.5f * 3.5f);
+                    //                         newG.DrawString(GetAreaScale(areas, i + 6).ToString("0.00%"), ftScale, /*bs[6 + i]*/Brushes.Black, offset * 1.05f + ((i + 1) * multiple - w0), output.Height + newH + output.Width / 6 * 0.5f * 0.5f * 3.5f + w0 / 3.5f);
+                    //                         continue;
+                    //                     }
                     newG.DrawString((6 + i).ToString() + "遍" + (((i + 6) == okcount) ? "及以上" : ""), ftString, /*bs[6 + i]*/Brushes.Black, offset * 1.05f + ((i + 1) * multiple - w0), output.Height + newH * 0.8f + output.Width / 6 * 0.5f * 0.5f * 3.5f);
                     newG.DrawString(area_ratio[6 + i].ToString("0.00%"), ftScale, /*bs[6 + i]*/Brushes.Black, offset * 1.05f + ((i + 1) * multiple - w0), output.Height + newH * 0.8f + output.Width / 6 * 0.5f * 0.5f * 3.5f + w0 / 3.5f);
                 }
 
                 //备注
-                RectangleF remarkPf = new RectangleF(offset - 4, output.Height + newH + output.Width / 6 * 0.5f * 0.5f * 3.5f + w0 / 3.5f + s.Height, newBmp.Width - 2*(offset - 4), newBmp.Height - (output.Height + newH + output.Width / 6 * 0.5f * 0.5f * 3.5f + w0 / 3.5f) - s.Height);
+                RectangleF remarkPf = new RectangleF(offset - 4, output.Height + newH + output.Width / 6 * 0.5f * 0.5f * 3.5f + w0 / 3.5f + s.Height, newBmp.Width - 2 * (offset - 4), newBmp.Height - (output.Height + newH + output.Width / 6 * 0.5f * 0.5f * 3.5f + w0 / 3.5f) - s.Height);
                 StringFormat remarkSf = new StringFormat();
                 remarkSf.LineAlignment = StringAlignment.Near;
                 remarkSf.Alignment = StringAlignment.Near;
@@ -953,7 +965,7 @@ namespace DM.Models
                 fa = 50f;
                 Font ftWord = new Font("微软雅黑", ft.Size, GraphicsUnit.Pixel);
                 s = newG.MeasureString("出图时间：" + dateNow, ftWord);
-                while (s.Height*2 > topBlank * 0.29f)
+                while (s.Height * 2 > topBlank * 0.29f)
                 {
                     fa = fa - 0.1f;
                     ftWord = new Font("微软雅黑", fa * factor);
@@ -972,7 +984,7 @@ namespace DM.Models
                 thisPf = new RectangleF(0, topBlank * 0.7f + s.Height, bitMp.Width * 0.98f, topBlank);
                 endG.DrawString(dateEndString, ftWord, Brushes.Black, thisPf, thisSf);
                 //输出分区，高程，名称，时间
-                string allString = this.Partition.Name + "分区   " + this.deckInfo.DesignZ.ToString()+"米高程   " + this.deckInfo.SegmentName + "仓面" + pl.ActualArea.ToString("（0.00 米²）");
+                string allString = this.Partition.Name + "分区   " + this.deckInfo.DesignZ.ToString() + "米高程   " + this.deckInfo.SegmentName + "仓面" + pl.ActualArea.ToString("（0.00 米²）");
                 fa = 20f;
                 ftTime = new Font("微软雅黑", fa * factor);
                 s = newG.MeasureString(allString, ftTime);
@@ -993,7 +1005,7 @@ namespace DM.Models
 
                 s = newG.MeasureString("碾压遍数图形报告", ftTitle);
                 fa = 10f;
-                while (s.Height > topBlank * 0.4f||s.Width > newBmp.Width)
+                while (s.Height > topBlank * 0.4f || s.Width > newBmp.Width)
                 {
                     ftTitle = new Font("微软雅黑", fa * factor);
                     s = newG.MeasureString("碾压遍数图形报告", ftTitle);
@@ -1009,7 +1021,7 @@ namespace DM.Models
                 if (!datamap)
                 {
                     rolladdres = @"C:\OUTPUT\" + this.DeckInfo.SegmentName.Trim() + @"\" + this.Partition.Name + this.Elevation.Height.ToString("0.0") + this.ID.ToString() + "roll.png";
-                   
+
 #if DEBUG
                     bitMp.Save(@"C:\OUTPUT\" + this.Partition.Name + this.Elevation.Height.ToString("0.0") + this.ID.ToString() + "roll.png");
 #else
@@ -1035,10 +1047,10 @@ namespace DM.Models
 
                 this.DrawPathMap();
             }
-                layer.RotateDegree = oldRotate;
-                layer.Zoom = oldZoom;
-                layer.CreateScreen();
-            
+            layer.RotateDegree = oldRotate;
+            layer.Zoom = oldZoom;
+            layer.CreateScreen();
+
 
             return true;
         }
@@ -1046,36 +1058,41 @@ namespace DM.Models
         {
             Polygon pl = this.Polygon;
             double lo, hi;
+            double zoomold = this.Owner.Zoom;
+            this.Owner.Zoom = 5;
             Bitmap bmp = ElevationImage(out lo, out hi);
+            DB.datamap.DAO.getInstance().updateElevationBitMap(deckInfo.BlockID, deckInfo.DesignZ, deckInfo.SegmentID, DB.datamap.DAO.getInstance().ToByte(bmp), lo.ToString("0.00") + "," + hi.ToString("0.00"));
+            this.Owner.Zoom = zoomold;
+            bmp = ElevationImage(out lo, out hi);
             // 1、决定车辆轨迹时间上的先后次序
             // 2、计算相对高度
             // 3、渐变画图
-            if (lo < 100 || hi < 100 || lo == double.MaxValue || hi == double.MinValue )
+            if (lo < 100 || hi < 100 || lo == double.MaxValue || hi == double.MinValue)
                 return null;
             double delta = hi - lo;
             Graphics g = Graphics.FromImage(bmp);
-            
-//             g.TranslateTransform((float)-pl.ScreenBoundary.Left, (float)-pl.ScreenBoundary.Top);
-// // 
-//             g.SmoothingMode = SmoothingMode.AntiAlias;
-//             g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+
+            //             g.TranslateTransform((float)-pl.ScreenBoundary.Left, (float)-pl.ScreenBoundary.Top);
+            // // 
+            //             g.SmoothingMode = SmoothingMode.AntiAlias;
+            //             g.InterpolationMode = InterpolationMode.HighQualityBicubic;
             //foreach (Vehicle v in this.VehicleControl.Vehicles)
             //{
             //    v.TrackGPSControl.Tracking.DrawElevation(g, lo, hi);
             //}
             //g.Clear(Color.Transparent);
-//             pl.Line.Color = deckFrameColor;
-//             pl.Fill.Codlor = Color.Transparent;
-//             pl.Draw(g);
+            //             pl.Line.Color = deckFrameColor;
+            //             pl.Fill.Codlor = Color.Transparent;
+            //             pl.Draw(g);
             //pl.SetDrawClip(g);
             DirectoryInfo di = new DirectoryInfo(@"C:\OUTPUT");
             if (!di.Exists)
             {
                 di.Create();
             }
-            DB.datamap.DAO.getInstance().updateElevationBitMap(deckInfo.BlockID, deckInfo.DesignZ, deckInfo.SegmentID, DB.datamap.DAO.getInstance().ToByte(bmp), lo.ToString("0.00") + "," + hi.ToString("0.00"));
+
 #if DEBUG
-            bmp.Save(@"C:\OUTPUT\"+this.Partition.Name + this.Elevation.Height.ToString("0.0") + this.ID.ToString() +"OrignElevation.png", System.Drawing.Imaging.ImageFormat.Png);
+            bmp.Save(@"C:\OUTPUT\" + this.Partition.Name + this.Elevation.Height.ToString("0.0") + this.ID.ToString() + "OrignElevation.png", System.Drawing.Imaging.ImageFormat.Png);
 #endif
 
             #region - 画图 -
@@ -1292,7 +1309,7 @@ namespace DM.Models
 
             newG.FillRectangle(b, offset, bmp.Height + offset * 1.4f, bmp.Width, offset / 3);
             newG.DrawRectangle(Pens.Black, offset, bmp.Height + offset * 1.4f, bmp.Width, offset / 3);
-            
+
             Pen rcPen = new Pen(Brushes.White, 2);
             float rcWidth = bmp.Width / 5;
             thisSf.Alignment = StringAlignment.Center;
@@ -1302,7 +1319,7 @@ namespace DM.Models
             for (int i = 0; i < 6; i++)
             {
                 thisPf = new RectangleF(offset + (i - 1) * rcWidth, bmp.Height + offset * 1.45f + offset * 0.2f, 2 * rcWidth, offset / 2);
-                if (i==0||i==5)
+                if (i == 0 || i == 5)
                 {
                     newG.DrawLine(rcPen, offset + i * rcWidth, bmp.Height + offset * 1.4f, offset + i * rcWidth, bmp.Height + offset * 1.4f + offset * 0.7f);
                     newG.DrawLine(Pens.Black, offset + i * rcWidth, bmp.Height + offset * 1.4f, offset + i * rcWidth, bmp.Height + offset * 1.4f + offset * 0.7f);
@@ -1313,10 +1330,10 @@ namespace DM.Models
                 newG.DrawString((hi - i * add).ToString("0.00"), ft, Brushes.Black, thisPf, thisSf);
             }
             SizeF s = newG.MeasureString((hi - lo).ToString("0.00"), ft);
-            newG.DrawLine(newPen, offset + 2.5f * rcWidth-s.Width, bmp.Height + offset * 1.4f + offset / 3+s.Height, offset, bmp.Height + offset * 1.4f + offset / 3+s.Height);
-            newG.DrawLine(newPen, offset + 2.5f * rcWidth+s.Width, bmp.Height + offset * 1.4f + offset / 3 + s.Height, offset + 5 * rcWidth, bmp.Height + offset * 1.4f + offset / 3+s.Height);
-            thisPf = new RectangleF(offset + 2 * rcWidth, bmp.Height + offset * 1.4f + offset / 3 + s.Height/2,rcWidth,s.Height);
-            newG.DrawString((hi - lo).ToString("0.00"),ft,Brushes.Black,thisPf,thisSf);
+            newG.DrawLine(newPen, offset + 2.5f * rcWidth - s.Width, bmp.Height + offset * 1.4f + offset / 3 + s.Height, offset, bmp.Height + offset * 1.4f + offset / 3 + s.Height);
+            newG.DrawLine(newPen, offset + 2.5f * rcWidth + s.Width, bmp.Height + offset * 1.4f + offset / 3 + s.Height, offset + 5 * rcWidth, bmp.Height + offset * 1.4f + offset / 3 + s.Height);
+            thisPf = new RectangleF(offset + 2 * rcWidth, bmp.Height + offset * 1.4f + offset / 3 + s.Height / 2, rcWidth, s.Height);
+            newG.DrawString((hi - lo).ToString("0.00"), ft, Brushes.Black, thisPf, thisSf);
             //三角指示
             PointF[] points = new PointF[3];
             points[0] = new PointF(offset, bmp.Height + offset);
@@ -1384,7 +1401,7 @@ namespace DM.Models
 
             s = newG.MeasureString("碾压遍数图形报告", ftTitle);
             fa = 10f;
-            while (s.Height > topBlank * 0.4f||s.Width > newBmp.Width)
+            while (s.Height > topBlank * 0.4f || s.Width > newBmp.Width)
             {
                 ftTitle = new Font("微软雅黑", fa * factor);
                 s = newG.MeasureString("碾压遍数图形报告", ftTitle);
@@ -1399,10 +1416,10 @@ namespace DM.Models
             #endregion
             //#if DEBUG
 
-            string address = @"C:\OUTPUT\" + this.DeckInfo.SegmentName + @"\" + this.Partition.Name + this.Elevation.Height.ToString("0.0")+this.ID.ToString() + "elevation.png";
+            string address = @"C:\OUTPUT\" + this.DeckInfo.SegmentName + @"\" + this.Partition.Name + this.Elevation.Height.ToString("0.0") + this.ID.ToString() + "elevation.png";
 #if DEBUG
             bitMp.Save(@"C:\OUTPUT\" + this.Partition.Name + this.Elevation.Height.ToString("0.0") + this.ID.ToString() + "elevation+.png");
-//#else
+            //#else
             //            bitMp.Save(address, System.Drawing.Imaging.ImageFormat.Png);
 #endif
             //#else
@@ -1420,7 +1437,7 @@ namespace DM.Models
             Polygon pl = this.Polygon;
             Bitmap bmp = new Bitmap((int)pl.ScreenBoundary.Width + 1, (int)pl.ScreenBoundary.Height + 1);
 
-            foreach(Vehicle v in this.VehicleControl.Vehicles)
+            foreach (Vehicle v in this.VehicleControl.Vehicles)
             {
                 v.TrackGPSControl.Tracking.FilterForOutput();
             }
@@ -1450,9 +1467,9 @@ namespace DM.Models
             {
                 v.TrackGPSControl.Tracking.Reset();
             }
-//#if DEBUG
-//            bmp.Save(@"C:\OUTPUT\"+this.DeckInfo.SegmentName+@"\elevation.png", System.Drawing.Imaging.ImageFormat.Png);
-//#endif
+            //#if DEBUG
+            //            bmp.Save(@"C:\OUTPUT\"+this.DeckInfo.SegmentName+@"\elevation.png", System.Drawing.Imaging.ImageFormat.Png);
+            //#endif
             return bmp;
         }
         public void DrawPathMap()
@@ -1669,15 +1686,15 @@ namespace DM.Models
             }
             float cutline = (newBmp.Width - offset * 1.05f + w0 * 0.3f - s.Width * 2.6f) / 9;
             //图例
-            newG.FillRectangle(Brushes.Black, offset, output.Height + newH + output.Width / 6 * 0.5f * 0.5f * 2, w0 *0.3f+ 2, w0 / 6f + 2);
-            newG.FillRectangle(Brushes.Yellow, offset + 1, 1 + output.Height + newH + output.Width / 6 * 0.5f * 0.5f * 2, w0*0.3f, w0 / 6f);
-            newG.DrawString("超速", ftString, Brushes.Black, offset * 1.05f + w0*0.3f, output.Height + newH + output.Width / 6 * 0.5f * 0.5f * 2);
+            newG.FillRectangle(Brushes.Black, offset, output.Height + newH + output.Width / 6 * 0.5f * 0.5f * 2, w0 * 0.3f + 2, w0 / 6f + 2);
+            newG.FillRectangle(Brushes.Yellow, offset + 1, 1 + output.Height + newH + output.Width / 6 * 0.5f * 0.5f * 2, w0 * 0.3f, w0 / 6f);
+            newG.DrawString("超速", ftString, Brushes.Black, offset * 1.05f + w0 * 0.3f, output.Height + newH + output.Width / 6 * 0.5f * 0.5f * 2);
             //振动不合格
             newG.FillRectangle(Brushes.Black, offset, output.Height + newH + output.Width / 6 * 0.5f * 0.5f * 3.5f, w0 * 0.3f + 2, w0 / 6f + 2);
             newG.FillRectangle(Brushes.Red, offset + 1, 1 + output.Height + newH + output.Width / 6 * 0.5f * 0.5f * 3.5f, w0 * 0.3f, w0 / 6f);
             newG.DrawString("振动不合格", ftString, Brushes.Black, offset * 1.05f + w0 * 0.3f, output.Height + newH + output.Width / 6 * 0.5f * 0.5f * 3.5f);
             Brush bs;
-            s=g.MeasureString("超速",ftString);
+            s = g.MeasureString("超速", ftString);
             for (int i = 0; i < vehicleName.Count && i < 8; i++)
             {
                 bs = new SolidBrush(vehicleColor[i]);
@@ -1687,11 +1704,11 @@ namespace DM.Models
             }
             if (vehicleName.Count > 8)
             {
-                for (int i = 0; i < vehicleName.Count-8; i++)
+                for (int i = 0; i < vehicleName.Count - 8; i++)
                 {//output.Height + newH + output.Width / 6 * 0.5f * 0.5f * 3.5f    output.Height + newH + output.Width / 6 * 0.5f * 0.5f * 3.5f
-                    bs = new SolidBrush(vehicleColor[i+8]);
+                    bs = new SolidBrush(vehicleColor[i + 8]);
                     newG.FillRectangle(Brushes.Black, offset * 1.05f + w0 * 0.3f + s.Width * 2.6f + i * cutline, output.Height + newH + output.Width / 6 * 0.5f * 0.5f * 3.5f, w0 * 0.2f + 2, w0 / 6f + 2);
-                    newG.FillRectangle(bs, offset * 1.05f + w0 * 0.3f + s.Width*2.6f + 1 + i * cutline, output.Height + newH + output.Width / 6 * 0.5f * 0.5f * 3.5f, w0 * 0.2f, w0 / 6f);
+                    newG.FillRectangle(bs, offset * 1.05f + w0 * 0.3f + s.Width * 2.6f + 1 + i * cutline, output.Height + newH + output.Width / 6 * 0.5f * 0.5f * 3.5f, w0 * 0.2f, w0 / 6f);
                     newG.DrawString(vehicleName[i + 8], ftString, Brushes.Black, offset * 1.05f + w0 * 0.3f + s.Width * 2.6f + w0 * 0.2f + 2 + i * cutline, output.Height + newH + output.Width / 6 * 0.5f * 0.5f * 3.5f);
                 }
             }
@@ -1776,18 +1793,18 @@ namespace DM.Models
 
             s = newG.MeasureString("碾压轨迹图形报告", ftTitle);
             fa = 10f;
-            while (s.Height > topBlank * 0.4f||s.Width > newBmp.Width)
+            while (s.Height > topBlank * 0.4f || s.Width > newBmp.Width)
             {
                 ftTitle = new Font("微软雅黑", fa * factor);
                 s = newG.MeasureString("碾压轨迹图形报告", ftTitle);
                 fa = fa - 0.1f;
             }
-  
+
 
             s = endG.MeasureString("轴", ftScale);
             endG.DrawString("轴(m)", ftScale, Brushes.Black, offset * 0.9f, topBlank - s.Height * 0.9f + 2 * factor);
             endG.DrawString("碾压轨迹图形报告", ftTitle, Brushes.Black, thisPf, thisSf);
-            string address = @"C:\OUTPUT\" + this.DeckInfo.SegmentName.Trim() + @"\" + this.Partition.Name+this.Elevation.Height.ToString("0.0")+this.ID.ToString()+ "tracing.png";
+            string address = @"C:\OUTPUT\" + this.DeckInfo.SegmentName.Trim() + @"\" + this.Partition.Name + this.Elevation.Height.ToString("0.0") + this.ID.ToString() + "tracing.png";
 
 #if DEBUG
             bitMp.Save(@"C:\OUTPUT\" + this.Partition.Name + this.Elevation.Height.ToString("0.0") + this.ID.ToString() + "tracing.png");
@@ -1861,7 +1878,7 @@ namespace DM.Models
              */
             int width = 0;
             int height = 0;
-            fixed(byte *p = datamap)
+            fixed (byte* p = datamap)
             {
                 // 取长宽
                 width = *(int*)p;
@@ -1874,13 +1891,13 @@ namespace DM.Models
 
                 // 取碾压变数、高程
                 byte* pp = p + 8;
-                for (int i = 0; i < height; i++ )
+                for (int i = 0; i < height; i++)
                 {
-                    for (int j = 0; j < width; j++ )
+                    for (int j = 0; j < width; j++)
                     {
                         int rollcount = pp[0];
                         float elev = *(float*)(pp + 1);
-                        if( elev != 0 )
+                        if (elev != 0)
                         {
                             h += elev;
                             count++;
@@ -1892,18 +1909,18 @@ namespace DM.Models
             if (count <= 0)
                 return -1;
 
-            return h/count;
+            return h / count;
         }
 
         public void CheckOverThickness(DM.Geo.Coord3D c3d)
         {
-            if( Thickness == -1 )
+            if (Thickness == -1)
                 return;
             if (!this.RectContains(c3d.Plane))
                 return;
 
-            double distance = c3d.Z - (Thickness + (1+deckInfo.ErrorParam/100)*deckInfo.DesignDepth);
-            if(distance > 0)
+            double distance = c3d.Z - (Thickness + (1 + deckInfo.ErrorParam / 100) * deckInfo.DesignDepth);
+            if (distance > 0)
             {
                 DM.Geo.Coord c = c3d.Plane.ToDamAxisCoord();
                 string position = string.Format("{{{0:0.00},{1:0.00}}}", c.X, c.Y);

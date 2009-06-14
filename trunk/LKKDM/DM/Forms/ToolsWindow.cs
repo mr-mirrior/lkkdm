@@ -15,6 +15,7 @@ namespace DM.Forms
         }
         #region - 变量 -
         WarningList warnForm;
+        public Forms.UnitInput FrmUnit;
         static ToolsWindow me;
         public static ToolsWindow I {get{return me;}}
         Views.LayerView currentLayer = null;
@@ -103,7 +104,8 @@ namespace DM.Forms
         {
             if (preview.Visible)
                 return;
-            preview.Show(this);
+            int 控制预览是否显示;
+            //preview.Show(this);
 
             Rectangle rc = this.DesktopBounds;
             int x, y;
@@ -641,6 +643,24 @@ namespace DM.Forms
                 return;
             dlg.Show(this.Owner);
             dlg.tbCoords.Text = string.Empty;
+        }
+
+        private void vistaButton2_Click_1(object sender, EventArgs e)
+        {
+
+            if (FrmUnit != null)
+                return;
+
+            FrmUnit = new UnitInput();
+            FrmUnit.Show(this.Owner);
+            
+
+            //Rectangle rc = this.DesktopBounds;
+            //int x, y;
+            //x = rc.Left - FrmUnit.Width;
+            //y = rc.Bottom - FrmUnit.Height;
+            //FrmUnit.Location = new Point(x, y);
+            
         }
     }
 }

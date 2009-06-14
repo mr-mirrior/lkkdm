@@ -135,130 +135,137 @@ namespace DM.Forms
 // 419.12,198.2
 // 444.92,69.2
 
+//坐标原点的绝对高程为1164（即基坑开挖最小高程1184-20）
+//每一行的第一个数据为x坐标（沿坝轴线），第二个数据为y坐标(与高程相对应）
+//每一行的第一个数据为x坐标，第二个数据为y坐标
+//x坐标为相对坐标，基点是一号坝段的左上角点（0，1303）
+//y坐标为绝对高程坐标，坝顶高程为1303
 
-        Geo.Coord[] DATA = new Geo.Coord[]{
-new Geo.Coord(-323.29,.07 ),
-new Geo.Coord(-374.41,10 ),
-new Geo.Coord(-434.76,10 ),
-new Geo.Coord(-434.36,12 ),
-new Geo.Coord(-374.22,12 ),
-new Geo.Coord(-323.72,2.19 ),
-new Geo.Coord(-323.29,.07 ),
-new Geo.Coord(-0,94.2 ),
-new Geo.Coord(-82,53.2),
-new Geo.Coord(-128.92,53.2),
-new Geo.Coord(-317.92,188.2),
-new Geo.Coord(-342.92,188.2),
-new Geo.Coord(-351.22,229.7),
-new Geo.Coord(-361.22,229.7),
-new Geo.Coord(-364.22,244.7),
-new Geo.Coord(-370.07,255.7),
-new Geo.Coord(-372.38,255.7),
-new Geo.Coord(-373.33,258.2),
-new Geo.Coord(-376.02,258.2),
-new Geo.Coord(-376.02,258.7),
-new Geo.Coord(-373.02,258.7),
-new Geo.Coord(-373.02,259.7),
-new Geo.Coord(-58.57,94.2),
-new Geo.Coord(-0,94.2),
-new Geo.Coord(-82,53.2),
-new Geo.Coord(-179.02,4.69),
-new Geo.Coord(-213.42,2.16),
-new Geo.Coord(-258.66,2.76),
-new Geo.Coord(-296.05,.15),
-new Geo.Coord(-305.28,0),
-new Geo.Coord(-324.12,94.2),
-new Geo.Coord(-186.32,94.2),
-new Geo.Coord(-128.92,53.2),
-new Geo.Coord(-82,53.2),
-new Geo.Coord(-186.32,94.2),
-new Geo.Coord(-324.12,94.2),
-new Geo.Coord(-342.92,188.2),
-new Geo.Coord(-317.92,188.2),
-new Geo.Coord(-186.32,94.2),
-new Geo.Coord(-305.28,0),
-new Geo.Coord(-315.28,0),
-new Geo.Coord(-361.22,229.7),
-new Geo.Coord(-351.22,229.7),
-new Geo.Coord(-305.28,0),
-new Geo.Coord(-315.28,0),
-new Geo.Coord(-323.29,.07),
-new Geo.Coord(-374.92,258.2),
-new Geo.Coord(-373.33,258.2),
-new Geo.Coord(-372.38,255.7),
-new Geo.Coord(-370.07,255.7),
-new Geo.Coord(-364.22,244.7),
-new Geo.Coord(-315.28,0),
-new Geo.Coord(-354.92,158.2),
-new Geo.Coord(-405.12,158.2),
-new Geo.Coord(-385.02,258.7),
-new Geo.Coord(-376.02,258.7),
-new Geo.Coord(-376.02,258.2),
-new Geo.Coord(-374.92,258.2),
-new Geo.Coord(-354.92,158.2),
-new Geo.Coord(-323.72,2.19),
-new Geo.Coord(-374.22,12),
-new Geo.Coord(-434.36,12),
-new Geo.Coord(-405.12,158.2),
-new Geo.Coord(-354.92,158.2),
-new Geo.Coord(-323.72,2.19),
-new Geo.Coord(-434.76,10),
-new Geo.Coord(-448.92,10),
-new Geo.Coord(-453.28,14.36),
-new Geo.Coord(-454.99,14.33),
-new Geo.Coord(-505.6,20.07),
-new Geo.Coord(-508.85,20.53),
-new Geo.Coord(-513.24,20.55),
-new Geo.Coord(-509.2,24.59),
-new Geo.Coord(-451.45,18.19),
-new Geo.Coord(-447.26,14),
-new Geo.Coord(-445.96,14),
-new Geo.Coord(-399.82,244.7),
-new Geo.Coord(-391.02,258.7),
-new Geo.Coord(-385.02,258.7),
-new Geo.Coord(-434.76,10),
-new Geo.Coord(-445.96,14),
-new Geo.Coord(-447.26,14),
-new Geo.Coord(-451.45,18.19),
-new Geo.Coord(-509.2,24.59),
-new Geo.Coord(-513.24,20.55),
-new Geo.Coord(-516.24,20.57),
-new Geo.Coord(-510.1,26.7),
-new Geo.Coord(-456.01,20.7),
-new Geo.Coord(-454.62,20.7),
-new Geo.Coord(-412.82,229.7),
-new Geo.Coord(-402.82,229.7),
-new Geo.Coord(-445.96,14),
-new Geo.Coord(-454.62,20.7),
-new Geo.Coord(-456.01,20.7),
-new Geo.Coord(-510.1,26.7),
-new Geo.Coord(-516.24,20.57),
-new Geo.Coord(-567.57,20.85),
-new Geo.Coord(-648.34,17.15),
-new Geo.Coord(-713.62,15.38),
-new Geo.Coord(-725.79,15.3),
-new Geo.Coord(-783.22,47.2),
-new Geo.Coord(-773.52,47.2),
-new Geo.Coord(-391.02,259.7),
-new Geo.Coord(-373.52,259.7),
-new Geo.Coord(-373.52,260.9),
-new Geo.Coord(-373.02,260.9),
-new Geo.Coord(-373.02,258.7),
-new Geo.Coord(-391.02,258.7),
-new Geo.Coord(-399.82,244.7),
-new Geo.Coord(-402.82,229.7),
-new Geo.Coord(-412.82,229.7),
-new Geo.Coord(-419.12,198.2),
-new Geo.Coord(-479.12,198.2),
-new Geo.Coord(-711.32,69.2),
-new Geo.Coord(-444.92,69.2),
-new Geo.Coord(-454.62,20.7),
-new Geo.Coord(-444.92,69.2),
-new Geo.Coord(-711.32,69.2),
-new Geo.Coord(-479.12,198.2),
-new Geo.Coord(-419.12,198.2),
-new Geo.Coord(-444.92,69.2)
-};
+        List<Geo.Coord> DATA = new List<DM.Geo.Coord>();
+//new Geo.Coord(-20.0000,139.0000),
+//new Geo.Coord(-43.0000,139.0000),
+//new Geo.Coord(-43.0000,103.0000),
+//new Geo.Coord(-34.9978,103.0000),
+//new Geo.Coord(-28.9934,123.0109),
+//new Geo.Coord(-26.9945,123.0109),
+//new Geo.Coord(-20.0000,137.0000),
+//new Geo.Coord(-20.0000,139.0000),
+//new Geo.Coord(-43.0000,139.0000),
+//new Geo.Coord(-64.0000,139.0000),
+//new Geo.Coord(-64.0000,87.0000),
+//new Geo.Coord(-57.0000,87.0000),
+//new Geo.Coord(-45.0000,103.0000),
+//new Geo.Coord(-43.0000,103.0000),
+//new Geo.Coord(-43.0000,139.0000),
+
+//new Geo.Coord(-364.22,244.7),
+//new Geo.Coord(-370.07,255.7),
+//new Geo.Coord(-372.38,255.7),
+//new Geo.Coord(-373.33,258.2),
+//new Geo.Coord(-376.02,258.2),
+//new Geo.Coord(-376.02,258.7),
+//new Geo.Coord(-373.02,258.7),
+//new Geo.Coord(-373.02,259.7),
+//new Geo.Coord(-58.57,94.2),
+//new Geo.Coord(-0,94.2),
+//new Geo.Coord(-82,53.2),
+//new Geo.Coord(-179.02,4.69),
+//new Geo.Coord(-213.42,2.16),
+//new Geo.Coord(-258.66,2.76),
+//new Geo.Coord(-296.05,.15),
+//new Geo.Coord(-305.28,0),
+//new Geo.Coord(-324.12,94.2),
+//new Geo.Coord(-186.32,94.2),
+//new Geo.Coord(-128.92,53.2),
+//new Geo.Coord(-82,53.2),
+//new Geo.Coord(-186.32,94.2),
+//new Geo.Coord(-324.12,94.2),
+//new Geo.Coord(-342.92,188.2),
+//new Geo.Coord(-317.92,188.2),
+//new Geo.Coord(-186.32,94.2),
+//new Geo.Coord(-305.28,0),
+//new Geo.Coord(-315.28,0),
+//new Geo.Coord(-361.22,229.7),
+//new Geo.Coord(-351.22,229.7),
+//new Geo.Coord(-305.28,0),
+//new Geo.Coord(-315.28,0),
+//new Geo.Coord(-323.29,.07),
+//new Geo.Coord(-374.92,258.2),
+//new Geo.Coord(-373.33,258.2),
+//new Geo.Coord(-372.38,255.7),
+//new Geo.Coord(-370.07,255.7),
+//new Geo.Coord(-364.22,244.7),
+//new Geo.Coord(-315.28,0),
+//new Geo.Coord(-354.92,158.2),
+//new Geo.Coord(-405.12,158.2),
+//new Geo.Coord(-385.02,258.7),
+//new Geo.Coord(-376.02,258.7),
+//new Geo.Coord(-376.02,258.2),
+//new Geo.Coord(-374.92,258.2),
+//new Geo.Coord(-354.92,158.2),
+//new Geo.Coord(-323.72,2.19),
+//new Geo.Coord(-374.22,12),
+//new Geo.Coord(-434.36,12),
+//new Geo.Coord(-405.12,158.2),
+//new Geo.Coord(-354.92,158.2),
+//new Geo.Coord(-323.72,2.19),
+//new Geo.Coord(-434.76,10),
+//new Geo.Coord(-448.92,10),
+//new Geo.Coord(-453.28,14.36),
+//new Geo.Coord(-454.99,14.33),
+//new Geo.Coord(-505.6,20.07),
+//new Geo.Coord(-508.85,20.53),
+//new Geo.Coord(-513.24,20.55),
+//new Geo.Coord(-509.2,24.59),
+//new Geo.Coord(-451.45,18.19),
+//new Geo.Coord(-447.26,14),
+//new Geo.Coord(-445.96,14),
+//new Geo.Coord(-399.82,244.7),
+//new Geo.Coord(-391.02,258.7),
+//new Geo.Coord(-385.02,258.7),
+//new Geo.Coord(-434.76,10),
+//new Geo.Coord(-445.96,14),
+//new Geo.Coord(-447.26,14),
+//new Geo.Coord(-451.45,18.19),
+//new Geo.Coord(-509.2,24.59),
+//new Geo.Coord(-513.24,20.55),
+//new Geo.Coord(-516.24,20.57),
+//new Geo.Coord(-510.1,26.7),
+//new Geo.Coord(-456.01,20.7),
+//new Geo.Coord(-454.62,20.7),
+//new Geo.Coord(-412.82,229.7),
+//new Geo.Coord(-402.82,229.7),
+//new Geo.Coord(-445.96,14),
+//new Geo.Coord(-454.62,20.7),
+//new Geo.Coord(-456.01,20.7),
+//new Geo.Coord(-510.1,26.7),
+//new Geo.Coord(-516.24,20.57),
+//new Geo.Coord(-567.57,20.85),
+//new Geo.Coord(-648.34,17.15),
+//new Geo.Coord(-713.62,15.38),
+//new Geo.Coord(-725.79,15.3),
+//new Geo.Coord(-783.22,47.2),
+//new Geo.Coord(-773.52,47.2),
+//new Geo.Coord(-391.02,259.7),
+//new Geo.Coord(-373.52,259.7),
+//new Geo.Coord(-373.52,260.9),
+//new Geo.Coord(-373.02,260.9),
+//new Geo.Coord(-373.02,258.7),
+//new Geo.Coord(-391.02,258.7),
+//new Geo.Coord(-399.82,244.7),
+//new Geo.Coord(-402.82,229.7),
+//new Geo.Coord(-412.82,229.7),
+//new Geo.Coord(-419.12,198.2),
+//new Geo.Coord(-479.12,198.2),
+//new Geo.Coord(-711.32,69.2),
+//new Geo.Coord(-444.92,69.2),
+//new Geo.Coord(-454.62,20.7),
+//new Geo.Coord(-444.92,69.2),
+//new Geo.Coord(-711.32,69.2),
+//new Geo.Coord(-479.12,198.2),
+//new Geo.Coord(-419.12,198.2),
+//new Geo.Coord(-444.92,69.2)
+//};
         /*
                 case "EU":
                     fill = Color.FromArgb(0xb4, 0x3d, 0x00);
@@ -297,12 +304,44 @@ new Geo.Coord(-444.92,69.2)
             Color.FromArgb(0xeb, 0xda, 0xc6),// FD
             Color.FromArgb(0xff, 0xff, 0xcc),// RD3
             Color.FromArgb(0x6e, 0x6e, 0x6e),// RD1
+            Color.FromArgb(0x9d, 0x9b, 0x9c),// RD2
+            Color.FromArgb(0xff, 0xff, 0xcc),// EJ
+            Color.FromArgb(0x6e, 0x6e, 0x6e),// RU1
+            Color.FromArgb(0x9d, 0x9b, 0x9c),// RU2
+            Color.FromArgb(0xff, 0xff, 0xcc),// RU4
+            Color.FromArgb(0xff, 0xff, 0xcc),// RU3
+            Color.FromArgb(0xeb, 0xda, 0xc6),// FU
+            Color.FromArgb(0xb4, 0x3d, 0x00),// EU
+            Color.FromArgb(0xeb, 0xda, 0xc6),// ED
+            Color.FromArgb(0xeb, 0xda, 0xc6),// FD
+            Color.FromArgb(0xff, 0xff, 0xcc),// RD3
+            Color.FromArgb(0x6e, 0x6e, 0x6e),// RD1
+            Color.FromArgb(0x9d, 0x9b, 0x9c),// RD2
+            Color.FromArgb(0xff, 0xff, 0xcc),// EJ
+            Color.FromArgb(0x6e, 0x6e, 0x6e),// RU1
+            Color.FromArgb(0x9d, 0x9b, 0x9c),// RU2
+            Color.FromArgb(0xff, 0xff, 0xcc),// RU4
+            Color.FromArgb(0xff, 0xff, 0xcc),// RU3
+            Color.FromArgb(0xeb, 0xda, 0xc6),// FU
+            Color.FromArgb(0xb4, 0x3d, 0x00),// EU
+            Color.FromArgb(0xeb, 0xda, 0xc6),// ED
+            Color.FromArgb(0xeb, 0xda, 0xc6),// FD
+            Color.FromArgb(0xff, 0xff, 0xcc),// RD3
+            Color.FromArgb(0x6e, 0x6e, 0x6e),// RD1
             Color.FromArgb(0x9d, 0x9b, 0x9c)// RD2
         };
         #endregion
         public EagleEye()
         {
             InitializeComponent();
+
+            //读取鸟瞰的所有点信息
+            for (int i = 1; i < 31;i++ )
+            {
+                DATA.AddRange(Models.FileHelper.ReadText(@"C:\lkk\" + i.ToString() + "号坝段.txt"));
+            }
+          
+
             this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             this.SetStyle(ControlStyles.DoubleBuffer, true);
             this.SetStyle(ControlStyles.ResizeRedraw, true);
@@ -318,7 +357,7 @@ new Geo.Coord(-444.92,69.2)
             List<Geo.Coord> lst = new List<DM.Geo.Coord>();
             Geo.Coord first = DATA[0];
             lst.Add(first);
-            for (int i = 1; i < DATA.Length; i++ )
+            for (int i = 1; i < DATA.Count; i++ )
             {
                 lst.Add(DATA[i]);
                 if (DATA[i].IsEqual(first))
@@ -338,7 +377,7 @@ new Geo.Coord(-444.92,69.2)
                     pl.FillColor = colors[pls.Count];
 
                     pls.Add(pl);
-                    if (i == DATA.Length - 1)
+                    if (i == DATA.Count - 1)
                         break;
 
                     lst = new List<DM.Geo.Coord>();
@@ -375,8 +414,9 @@ new Geo.Coord(-444.92,69.2)
                 AddLayer(part, new DM.Models.Elevation(deck.DesignZ));
             }
         }
-        const float LOWEST = 560.1f; // RU3
-        const float HIGHEST = 821.5f; // RD1
+
+        const float LOWEST = 1184f; // RU3
+        const float HIGHEST = 1303f; // RD1
 
         static EagleEye me = new EagleEye();
 
@@ -392,18 +432,36 @@ new Geo.Coord(-444.92,69.2)
         List<Models.Partition> partitions = new List<DM.Models.Partition>();
         List<Models.Elevation> elevations = new List<DM.Models.Elevation>();
         static string[] partitionNames = new string[] {
-            "EJ",
-            "RU1",
-            "RU2",
-            "RU4",
-            "RU3",
-            "FU",
-            "EU",
-            "ED",
-            "FD",
-            "RD3",
-            "RD1",
-            "RD2"
+               "1号坝段",                                                                                         //"EJ",
+               "2号坝段",                                                                                          //"RU1",
+               "3号坝段",                                                                                          //"RU2",
+               "4号坝段",                                                                                          //"RU4",
+               "5号坝段",                                                                                          //"RU3",
+               "6号坝段",                                                                                          //"FU",
+               "7号坝段",                                                                                          //"EU",
+               "8号坝段",                                                                                          //"ED",
+               "9号坝段",                                                                                          //"FD",
+               "10号坝段",                                                                                          //"RD3",
+               "11号坝段",                                                                                          //"RD1",
+               "12号坝段",                                                                                          //"RD2"
+               "13号坝段", 
+               "14号坝段", 
+               "15号坝段", 
+               "16号坝段", 
+               "17号坝段", 
+               "18号坝段", 
+               "19号坝段", 
+               "20号坝段", 
+               "21号坝段", 
+               "22号坝段", 
+               "23号坝段", 
+               "24号坝段", 
+               "25号坝段", 
+               "26号坝段", 
+               "27号坝段", 
+               "28号坝段", 
+               "29号坝段", 
+               "30号坝段", 
             };
         private static int Index(string name)
         {
@@ -454,7 +512,7 @@ new Geo.Coord(-444.92,69.2)
                 //using (Brush b = new SolidBrush(Color.FromArgb(0xFF, Color.White)), b1 = new SolidBrush(Color.FromArgb(0xFF, Color.Black)))
                 {
                     //string str = "糯   扎   渡   大   坝   填   筑   质   量   GPS   监   控   系   统";
-                    string str = "糯   扎   渡   水   电   站" + "\n 大   坝   填   筑   质   量   GPS   监   控   系   统";
+                    string str = "龙   开   口   水   电   站" + "\n 大   坝   填   筑   质   量   GPS   监   控   系   统";
                     g.DrawString(str, ft1, Brushes.Black, this.ClientRectangle, sf5);
                     //g.DrawString("大 坝 填 筑 质 量 GPS 监 控 系 统", ft, b, this.ClientRectangle, sf);
                     //Utils.Graph.OutGlow.DrawOutglowText(g, str, ft, this.ClientRectangle, sf, b, b1);

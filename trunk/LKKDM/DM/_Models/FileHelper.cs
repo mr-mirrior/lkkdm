@@ -75,8 +75,8 @@ namespace DM.Models
                 {
                     if (line.Length != 0)
                     {
-                        string[] s = line.Trim().Split(new char[] { ',' });
-                        pts.Add(new Coord(Convert.ToSingle(s[0]), -Convert.ToSingle(s[1])));
+                        string[] s = line.Trim().Split(new char[] { ' ' });
+                        pts.Add(new Coord(Convert.ToSingle(s[0].Trim()), -Convert.ToSingle(s[3].Trim())));
                     }
                     line = sr.ReadLine();
                 }
@@ -87,6 +87,34 @@ namespace DM.Models
             catch (FileNotFoundException)
             {
                 Utils.MB.Error(fullpath+" not found!");
+            }
+            return null;
+        }
+
+        public static List<Coord> ReadText(string fullpath)
+        {
+            try
+            {
+                List<Coord> pts = new List<Coord>();
+                FileStream fs = new FileStream(fullpath, FileMode.Open);
+                StreamReader sr = new StreamReader(fs);
+                string line = sr.ReadLine();
+                while (line != null)
+                {
+                    if (line.Length != 0)
+                    {
+                        string[] s = line.Trim().Split(new char[] { ' ' });
+                        pts.Add(new Coord(-Convert.ToSingle(s[0].Trim()), Convert.ToSingle(s[3].Trim())));
+                    }
+                    line = sr.ReadLine();
+                }
+                fs.Close();
+
+                return pts;
+            }
+            catch (FileNotFoundException)
+            {
+                Utils.MB.Error(fullpath + " not found!");
             }
             return null;
         }
