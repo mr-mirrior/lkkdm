@@ -13,7 +13,7 @@ namespace DM.DB
 
             //DBconfig.getInstance().init();糯扎渡水电站
             string dbname = /*"DAMGPS"*/DBconfig.getInstance().Dbname;
-
+            dbname = "DamLKK";
 
             string server = /*"172.23.225.215"*/DBconfig.getInstance().Server;
             string username = /*"sa"*/DBconfig.getInstance().Username;

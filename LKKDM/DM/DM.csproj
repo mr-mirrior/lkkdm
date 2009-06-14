@@ -94,6 +94,7 @@
     <Compile Include="DB\SegmentDAO.cs" />
     <Compile Include="DB\TracePoint.cs" />
     <Compile Include="DB\TracePointDAO.cs" />
+    <Compile Include="DB\UnitDAO.cs" />
     <Compile Include="DB\User.cs" />
     <Compile Include="DB\UserDAO.cs" />
     <Compile Include="DB\UserInfo.cs" />
@@ -116,6 +117,12 @@
     </Compile>
     <Compile Include="Forms\OverBlock.Designer.cs">
       <DependentUpon>OverBlock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UnitInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UnitInput.Designer.cs">
+      <DependentUpon>UnitInput.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\VehicleHistory.cs">
       <SubType>Form</SubType>
@@ -236,6 +243,7 @@
     <Compile Include="_Models\Polygon.cs" />
     <Compile Include="Geo\DamUtils.cs" />
     <Compile Include="_Models\TrackGPS.cs" />
+    <Compile Include="_Models\Unit.cs" />
     <Compile Include="_Models\Vehicle.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -387,6 +395,10 @@
       <DependentUpon>ToolsWindow.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UnitInput.resx">
+      <DependentUpon>UnitInput.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\VehicleHistory.resx">
       <DependentUpon>VehicleHistory.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -414,6 +426,37 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DM21.ico" />
+    <Content Include="Doc\坝段立视图控制点坐标\10号坝段.txt" />
+    <Content Include="Doc\坝段立视图控制点坐标\11号坝段.txt" />
+    <Content Include="Doc\坝段立视图控制点坐标\12号坝段.txt" />
+    <Content Include="Doc\坝段立视图控制点坐标\13号坝段.txt" />
+    <Content Include="Doc\坝段立视图控制点坐标\14号坝段.txt" />
+    <Content Include="Doc\坝段立视图控制点坐标\15号坝段.txt" />
+    <Content Include="Doc\坝段立视图控制点坐标\16号坝段.txt" />
+    <Content Include="Doc\坝段立视图控制点坐标\17号坝段.txt" />
+    <Content Include="Doc\坝段立视图控制点坐标\18号坝段.txt" />
+    <Content Include="Doc\坝段立视图控制点坐标\19号坝段.txt" />
+    <Content Include="Doc\坝段立视图控制点坐标\1号坝段.txt" />
+    <Content Include="Doc\坝段立视图控制点坐标\20号坝段.txt" />
+    <Content Include="Doc\坝段立视图控制点坐标\21号坝段.txt" />
+    <Content Include="Doc\坝段立视图控制点坐标\22号坝段.txt" />
+    <Content Include="Doc\坝段立视图控制点坐标\23号坝段.txt" />
+    <Content Include="Doc\坝段立视图控制点坐标\24号坝段.txt" />
+    <Content Include="Doc\坝段立视图控制点坐标\25号坝段.txt" />
+    <Content Include="Doc\坝段立视图控制点坐标\26号坝段.txt" />
+    <Content Include="Doc\坝段立视图控制点坐标\27号坝段.txt" />
+    <Content Include="Doc\坝段立视图控制点坐标\28号坝段.txt" />
+    <Content Include="Doc\坝段立视图控制点坐标\29号坝段.txt" />
+    <Content Include="Doc\坝段立视图控制点坐标\2号坝段.txt" />
+    <Content Include="Doc\坝段立视图控制点坐标\30号坝段.txt" />
+    <Content Include="Doc\坝段立视图控制点坐标\3号坝段.txt" />
+    <Content Include="Doc\坝段立视图控制点坐标\4号坝段.txt" />
+    <Content Include="Doc\坝段立视图控制点坐标\5号坝段.txt" />
+    <Content Include="Doc\坝段立视图控制点坐标\6号坝段.txt" />
+    <Content Include="Doc\坝段立视图控制点坐标\7号坝段.txt" />
+    <Content Include="Doc\坝段立视图控制点坐标\8号坝段.txt" />
+    <Content Include="Doc\坝段立视图控制点坐标\9号坝段.txt" />
+    <Content Include="Doc\坝段立视图控制点坐标\数据说明.txt" />
     <Content Include="SETUP\软件重用修改目录.txt" />
     <Content Include="Utils\ThicknessImage\副本 DataMapManager.txt" />
     <None Include="SETUP\DM2.iss" />

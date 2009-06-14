@@ -202,8 +202,10 @@ namespace DM.DB
             }
             String sqlTxt = "select * from segment where blockid = " + blockid + " and designz=" + designz;
             SqlDataReader dr = DBConnection.executeQuery(DBConnection.getSqlConnection(),sqlTxt);
-            sqlTxt = "delete from segment where blockid = " + blockid + " and designz=" + designz;
+            sqlTxt = "update segment set elevationImage=NULL,rollImage=NULL where blockid = " + blockid + " and designz=" + designz;
             int updateCount = DBConnection.executeUpdate(sqlTxt);
+            sqlTxt = "delete from segment where blockid = " + blockid + " and designz=" + designz;
+            updateCount = DBConnection.executeUpdate(sqlTxt);
             //if(updateCount>0){
             foreach (Segment segment in segments)
             {

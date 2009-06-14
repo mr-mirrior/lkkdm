@@ -31,21 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.ckAllPart = new System.Windows.Forms.CheckBox();
-            this.btnInputCoord = new DM.Utils.VistaButton();
-            this.vistaButton1 = new DM.Utils.VistaButton();
-            this.btnZuoan = new DM.Utils.VistaButton();
-            this.btnYouan = new DM.Utils.VistaButton();
-            this.btnDeckPoly = new DM.Utils.VistaButton();
-            this.btnDeckRect = new DM.Utils.VistaButton();
-            this.btnFitscreen = new DM.Utils.VistaButton();
-            this.btnShangyou = new DM.Utils.VistaButton();
-            this.btnRestore = new DM.Utils.VistaButton();
-            this.btnRollCount = new DM.Utils.VistaButton();
-            this.btn7 = new DM.Utils.VistaButton();
-            this.btnXiayou = new DM.Utils.VistaButton();
-            this.btn3 = new DM.Utils.VistaButton();
-            this.btn1 = new DM.Utils.VistaButton();
-            this.btn11 = new DM.Utils.VistaButton();
             this.label2 = new System.Windows.Forms.Label();
             this.cbElevations = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -61,6 +46,28 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.cbMode = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.cbWorkUnit = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.vistaButton2 = new DM.Utils.VistaButton();
+            this.btnInputCoord = new DM.Utils.VistaButton();
+            this.vistaButton1 = new DM.Utils.VistaButton();
+            this.btnZuoan = new DM.Utils.VistaButton();
+            this.btnYouan = new DM.Utils.VistaButton();
+            this.btnDeckPoly = new DM.Utils.VistaButton();
+            this.btnDeckRect = new DM.Utils.VistaButton();
+            this.btnFitscreen = new DM.Utils.VistaButton();
+            this.btnShangyou = new DM.Utils.VistaButton();
+            this.btnRestore = new DM.Utils.VistaButton();
+            this.btnRollCount = new DM.Utils.VistaButton();
+            this.btn7 = new DM.Utils.VistaButton();
+            this.btnXiayou = new DM.Utils.VistaButton();
+            this.btn3 = new DM.Utils.VistaButton();
+            this.btn1 = new DM.Utils.VistaButton();
+            this.btn11 = new DM.Utils.VistaButton();
             this.SuspendLayout();
             // 
             // toolTip1
@@ -71,7 +78,7 @@
             // 
             this.ckAllPart.AutoSize = true;
             this.ckAllPart.ForeColor = System.Drawing.Color.Black;
-            this.ckAllPart.Location = new System.Drawing.Point(39, 471);
+            this.ckAllPart.Location = new System.Drawing.Point(39, 114);
             this.ckAllPart.Name = "ckAllPart";
             this.ckAllPart.Size = new System.Drawing.Size(51, 21);
             this.ckAllPart.TabIndex = 25;
@@ -80,6 +87,245 @@
             this.ckAllPart.UseVisualStyleBackColor = true;
             this.ckAllPart.Visible = false;
             this.ckAllPart.MouseMove += new System.Windows.Forms.MouseEventHandler(this.cbPartitions_MouseMove);
+            // 
+            // label2
+            // 
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label2.Location = new System.Drawing.Point(7, 220);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(78, 2);
+            this.label2.TabIndex = 17;
+            // 
+            // cbElevations
+            // 
+            this.cbElevations.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbElevations.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cbElevations.FormattingEnabled = true;
+            this.cbElevations.Location = new System.Drawing.Point(4, 135);
+            this.cbElevations.Name = "cbElevations";
+            this.cbElevations.Size = new System.Drawing.Size(77, 25);
+            this.cbElevations.Sorted = true;
+            this.cbElevations.TabIndex = 20;
+            this.cbElevations.SelectedIndexChanged += new System.EventHandler(this.cbElevations_SelectedIndexChanged);
+            this.cbElevations.Enter += new System.EventHandler(this.cbPartitions_Enter);
+            this.cbElevations.MouseMove += new System.Windows.Forms.MouseEventHandler(this.cbPartitions_MouseMove);
+            this.cbElevations.TextUpdate += new System.EventHandler(this.cbElevations_TextUpdate);
+            this.cbElevations.Click += new System.EventHandler(this.cbPartitions_Click);
+            // 
+            // label3
+            // 
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(1, 115);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(46, 21);
+            this.label3.TabIndex = 19;
+            this.label3.Text = "高程：";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label3.Visible = false;
+            this.label3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.cbPartitions_MouseMove);
+            // 
+            // cbPartitions
+            // 
+            this.cbPartitions.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbPartitions.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cbPartitions.FormattingEnabled = true;
+            this.cbPartitions.Location = new System.Drawing.Point(4, 88);
+            this.cbPartitions.Name = "cbPartitions";
+            this.cbPartitions.Size = new System.Drawing.Size(77, 25);
+            this.cbPartitions.TabIndex = 18;
+            this.cbPartitions.SelectedIndexChanged += new System.EventHandler(this.cbPartitions_SelectedIndexChanged);
+            this.cbPartitions.Enter += new System.EventHandler(this.cbPartitions_Enter);
+            this.cbPartitions.MouseMove += new System.Windows.Forms.MouseEventHandler(this.cbPartitions_MouseMove);
+            this.cbPartitions.TextUpdate += new System.EventHandler(this.cbPartitions_TextUpdate);
+            this.cbPartitions.Click += new System.EventHandler(this.cbPartitions_Click);
+            // 
+            // label4
+            // 
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(1, 64);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(46, 21);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "分区：";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label4.Visible = false;
+            this.label4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.cbPartitions_MouseMove);
+            // 
+            // btnOpen
+            // 
+            this.btnOpen.Location = new System.Drawing.Point(41, 62);
+            this.btnOpen.Name = "btnOpen";
+            this.btnOpen.Size = new System.Drawing.Size(41, 23);
+            this.btnOpen.TabIndex = 0;
+            this.btnOpen.Text = "打开";
+            this.btnOpen.UseVisualStyleBackColor = true;
+            this.btnOpen.MouseMove += new System.Windows.Forms.MouseEventHandler(this.cbPartitions_MouseMove);
+            this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
+            this.btnOpen.Enter += new System.EventHandler(this.cbPartitions_Enter);
+            // 
+            // ckPreview
+            // 
+            this.ckPreview.AutoSize = true;
+            this.ckPreview.ForeColor = System.Drawing.Color.Black;
+            this.ckPreview.Location = new System.Drawing.Point(45, 318);
+            this.ckPreview.Name = "ckPreview";
+            this.ckPreview.Size = new System.Drawing.Size(51, 21);
+            this.ckPreview.TabIndex = 21;
+            this.ckPreview.Text = "预览";
+            this.ckPreview.UseVisualStyleBackColor = true;
+            this.ckPreview.Visible = false;
+            this.ckPreview.CheckedChanged += new System.EventHandler(this.ckPreview_CheckedChanged);
+            this.ckPreview.MouseMove += new System.Windows.Forms.MouseEventHandler(this.cbPartitions_MouseMove);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(8, 226);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(32, 17);
+            this.label1.TabIndex = 24;
+            this.label1.Text = "分仓";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(8, 117);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(32, 17);
+            this.label5.TabIndex = 26;
+            this.label5.Text = "视角";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(8, 7);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(32, 17);
+            this.label6.TabIndex = 27;
+            this.label6.Text = "移动";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(8, 61);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(32, 17);
+            this.label7.TabIndex = 28;
+            this.label7.Text = "缩放";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(8, 283);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(56, 17);
+            this.label8.TabIndex = 29;
+            this.label8.Text = "碾压情况";
+            // 
+            // label9
+            // 
+            this.label9.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label9.Location = new System.Drawing.Point(6, 345);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(78, 2);
+            this.label9.TabIndex = 31;
+            // 
+            // label10
+            // 
+            this.label10.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label10.Location = new System.Drawing.Point(6, 378);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(78, 2);
+            this.label10.TabIndex = 34;
+            // 
+            // cbMode
+            // 
+            this.cbMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbMode.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cbMode.FormattingEnabled = true;
+            this.cbMode.Items.AddRange(new object[] {
+            "设计模式",
+            "查询模式"});
+            this.cbMode.Location = new System.Drawing.Point(6, 29);
+            this.cbMode.Name = "cbMode";
+            this.cbMode.Size = new System.Drawing.Size(75, 25);
+            this.cbMode.TabIndex = 35;
+            this.cbMode.Visible = false;
+            this.cbMode.SelectedIndexChanged += new System.EventHandler(this.cbMode_SelectedIndexChanged);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(8, 421);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(56, 17);
+            this.label11.TabIndex = 37;
+            this.label11.Text = "施工单元";
+            // 
+            // cbWorkUnit
+            // 
+            this.cbWorkUnit.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbWorkUnit.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cbWorkUnit.FormattingEnabled = true;
+            this.cbWorkUnit.Location = new System.Drawing.Point(5, 441);
+            this.cbWorkUnit.Name = "cbWorkUnit";
+            this.cbWorkUnit.Size = new System.Drawing.Size(77, 25);
+            this.cbWorkUnit.Sorted = true;
+            this.cbWorkUnit.TabIndex = 38;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(23, 523);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(41, 23);
+            this.button1.TabIndex = 39;
+            this.button1.Text = "打开";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // label12
+            // 
+            this.label12.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label12.Location = new System.Drawing.Point(5, 419);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(78, 2);
+            this.label12.TabIndex = 41;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(4, 492);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(77, 25);
+            this.comboBox1.Sorted = true;
+            this.comboBox1.TabIndex = 42;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(8, 472);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(56, 17);
+            this.label13.TabIndex = 43;
+            this.label13.Text = "舱面标识";
+            // 
+            // vistaButton2
+            // 
+            this.vistaButton2.BackColor = System.Drawing.Color.White;
+            this.vistaButton2.ButtonColor = System.Drawing.Color.MidnightBlue;
+            this.vistaButton2.ButtonText = "规划单元";
+            this.vistaButton2.CornerRadius = 4;
+            this.vistaButton2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.vistaButton2.GlowColor = System.Drawing.Color.Lavender;
+            this.vistaButton2.HighlightColor = System.Drawing.Color.Silver;
+            this.vistaButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.vistaButton2.Location = new System.Drawing.Point(5, 384);
+            this.vistaButton2.Name = "vistaButton2";
+            this.vistaButton2.Size = new System.Drawing.Size(77, 32);
+            this.vistaButton2.TabIndex = 40;
+            this.toolTip1.SetToolTip(this.vistaButton2, "从右岸往对面看");
+            this.vistaButton2.Click += new System.EventHandler(this.vistaButton2_Click_1);
             // 
             // btnInputCoord
             // 
@@ -177,7 +423,7 @@
             this.btnDeckRect.GlowColor = System.Drawing.Color.White;
             this.btnDeckRect.HighlightColor = System.Drawing.Color.Silver;
             this.btnDeckRect.ImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnDeckRect.Location = new System.Drawing.Point(48, 303);
+            this.btnDeckRect.Location = new System.Drawing.Point(44, -2);
             this.btnDeckRect.Margin = new System.Windows.Forms.Padding(0);
             this.btnDeckRect.Name = "btnDeckRect";
             this.btnDeckRect.Size = new System.Drawing.Size(36, 36);
@@ -341,175 +587,20 @@
             this.toolTip1.SetToolTip(this.btn11, "左键放大/右键缩小");
             this.btn11.Click += new System.EventHandler(this.btn11_Click);
             // 
-            // label2
-            // 
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label2.Location = new System.Drawing.Point(7, 220);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(78, 2);
-            this.label2.TabIndex = 17;
-            // 
-            // cbElevations
-            // 
-            this.cbElevations.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cbElevations.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.cbElevations.FormattingEnabled = true;
-            this.cbElevations.Location = new System.Drawing.Point(4, 492);
-            this.cbElevations.Name = "cbElevations";
-            this.cbElevations.Size = new System.Drawing.Size(77, 25);
-            this.cbElevations.Sorted = true;
-            this.cbElevations.TabIndex = 20;
-            this.cbElevations.SelectedIndexChanged += new System.EventHandler(this.cbElevations_SelectedIndexChanged);
-            this.cbElevations.Enter += new System.EventHandler(this.cbPartitions_Enter);
-            this.cbElevations.MouseMove += new System.Windows.Forms.MouseEventHandler(this.cbPartitions_MouseMove);
-            this.cbElevations.TextUpdate += new System.EventHandler(this.cbElevations_TextUpdate);
-            this.cbElevations.Click += new System.EventHandler(this.cbPartitions_Click);
-            // 
-            // label3
-            // 
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(1, 472);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 21);
-            this.label3.TabIndex = 19;
-            this.label3.Text = "高程：";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.cbPartitions_MouseMove);
-            // 
-            // cbPartitions
-            // 
-            this.cbPartitions.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cbPartitions.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.cbPartitions.FormattingEnabled = true;
-            this.cbPartitions.Location = new System.Drawing.Point(4, 445);
-            this.cbPartitions.Name = "cbPartitions";
-            this.cbPartitions.Size = new System.Drawing.Size(77, 25);
-            this.cbPartitions.TabIndex = 18;
-            this.cbPartitions.SelectedIndexChanged += new System.EventHandler(this.cbPartitions_SelectedIndexChanged);
-            this.cbPartitions.Enter += new System.EventHandler(this.cbPartitions_Enter);
-            this.cbPartitions.MouseMove += new System.Windows.Forms.MouseEventHandler(this.cbPartitions_MouseMove);
-            this.cbPartitions.TextUpdate += new System.EventHandler(this.cbPartitions_TextUpdate);
-            this.cbPartitions.Click += new System.EventHandler(this.cbPartitions_Click);
-            // 
-            // label4
-            // 
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(1, 421);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 21);
-            this.label4.TabIndex = 16;
-            this.label4.Text = "分区：";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.cbPartitions_MouseMove);
-            // 
-            // btnOpen
-            // 
-            this.btnOpen.Location = new System.Drawing.Point(41, 419);
-            this.btnOpen.Name = "btnOpen";
-            this.btnOpen.Size = new System.Drawing.Size(41, 23);
-            this.btnOpen.TabIndex = 0;
-            this.btnOpen.Text = "打开";
-            this.btnOpen.UseVisualStyleBackColor = true;
-            this.btnOpen.MouseMove += new System.Windows.Forms.MouseEventHandler(this.cbPartitions_MouseMove);
-            this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
-            this.btnOpen.Enter += new System.EventHandler(this.cbPartitions_Enter);
-            // 
-            // ckPreview
-            // 
-            this.ckPreview.AutoSize = true;
-            this.ckPreview.ForeColor = System.Drawing.Color.Black;
-            this.ckPreview.Location = new System.Drawing.Point(4, 522);
-            this.ckPreview.Name = "ckPreview";
-            this.ckPreview.Size = new System.Drawing.Size(51, 21);
-            this.ckPreview.TabIndex = 21;
-            this.ckPreview.Text = "预览";
-            this.ckPreview.UseVisualStyleBackColor = true;
-            this.ckPreview.Visible = false;
-            this.ckPreview.CheckedChanged += new System.EventHandler(this.ckPreview_CheckedChanged);
-            this.ckPreview.MouseMove += new System.Windows.Forms.MouseEventHandler(this.cbPartitions_MouseMove);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 226);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 17);
-            this.label1.TabIndex = 24;
-            this.label1.Text = "分仓";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 117);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(32, 17);
-            this.label5.TabIndex = 26;
-            this.label5.Text = "视角";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(8, 7);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(32, 17);
-            this.label6.TabIndex = 27;
-            this.label6.Text = "移动";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(8, 61);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(32, 17);
-            this.label7.TabIndex = 28;
-            this.label7.Text = "缩放";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(8, 283);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(56, 17);
-            this.label8.TabIndex = 29;
-            this.label8.Text = "碾压情况";
-            // 
-            // label9
-            // 
-            this.label9.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label9.Location = new System.Drawing.Point(6, 345);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(78, 2);
-            this.label9.TabIndex = 31;
-            // 
-            // label10
-            // 
-            this.label10.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label10.Location = new System.Drawing.Point(6, 379);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(78, 2);
-            this.label10.TabIndex = 34;
-            // 
-            // cbMode
-            // 
-            this.cbMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbMode.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cbMode.FormattingEnabled = true;
-            this.cbMode.Items.AddRange(new object[] {
-            "设计模式",
-            "查询模式"});
-            this.cbMode.Location = new System.Drawing.Point(6, 386);
-            this.cbMode.Name = "cbMode";
-            this.cbMode.Size = new System.Drawing.Size(75, 25);
-            this.cbMode.TabIndex = 35;
-            this.cbMode.SelectedIndexChanged += new System.EventHandler(this.cbMode_SelectedIndexChanged);
-            // 
             // ToolsWindow
             // 
             this.AcceptButton = this.btnOpen;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Lavender;
-            this.ClientSize = new System.Drawing.Size(88, 524);
+            this.ClientSize = new System.Drawing.Size(88, 558);
             this.ControlBox = false;
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.vistaButton2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.cbWorkUnit);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.btnInputCoord);
             this.Controls.Add(this.cbMode);
             this.Controls.Add(this.label10);
@@ -545,9 +636,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.KeyPreview = true;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(94, 550);
+            this.MaximumSize = new System.Drawing.Size(94, 580);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(94, 550);
+            this.MinimumSize = new System.Drawing.Size(94, 570);
             this.Name = "ToolsWindow";
             this.Opacity = 0.75;
             this.ShowIcon = false;
@@ -596,6 +687,13 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cbMode;
         private DM.Utils.VistaButton btnInputCoord;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox cbWorkUnit;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label12;
+        private DM.Utils.VistaButton vistaButton2;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label13;
 
     }
 }
